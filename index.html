@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Форма регистрации</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 420px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      color: #1a1a2e;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 0.35rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 1.1rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    input:focus { border-color: #4f8ef7; }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background: #4f8ef7;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover { background: #3a7be0; }
+
+    #result {
+      margin-top: 1.1rem;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 600;
+      min-height: 1.4em;
+    }
+
+    #result.success { color: #28a745; }
+    #result.error   { color: #dc3545; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Форма регистрации</h1>
+
+    <label for="name">Имя</label>
+    <input type="text" id="name" placeholder="Введите имя" />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Введите email" />
+
+    <button id="submit-btn">Отправить</button>
+
+    <p id="result"></p>
+  </div>
+
+  <script>
+    document.getElementById('submit-btn').addEventListener('click', function () {
+      const name  = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const result = document.getElementById('result');
+
+      if (name && email) {
+        result.textContent = 'Форма отправлена!';
+        result.className = 'success';
+      } else {
+        result.textContent = 'Заполните все поля';
+        result.className = 'error';
+      }
+    });
+  </script>
+</body>
+</html>
